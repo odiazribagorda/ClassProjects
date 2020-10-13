@@ -1,0 +1,67 @@
+// Oscar Diaz Ribagorda (DG04)
+
+#include <iostream>
+#include <vector>
+#include <exception>
+#include <stdexcept>
+using namespace std;
+
+
+
+
+class horas{
+public:
+	int segundo;
+	int minuto;
+	int lahora;
+
+	horas(){};
+
+	horas(int seg, int min, int hor){
+		int a = 0;
+		segundo = seg;
+		minuto = min;
+		lahora = hor;
+		if (seg > 59 || min > 59 || hor > 23)throw invalid_argument("ERROR");
+	}
+	bool operator <(horas const& that) const {
+		return lahora < that.lahora || (lahora == that.lahora && minuto<that.minuto) ||
+			(lahora == that.lahora && minuto==that.minuto && segundo<that.segundo);
+	}
+};
+
+
+inline ostream & operator<<(ostream & out, horas const& hor) {
+	if (hor.lahora < 10)out << '0';
+	out << hor.lahora << ':';
+	if (hor.minuto < 10)out << '0';
+	out << hor.minuto << ':';
+	if (hor.segundo < 10)out << '0';
+	out << hor.segundo;
+	return out;
+}
+
+
+inline istream & operator>>(istream & in, horas & hor) {
+	char c; int a, min, hora, seg;
+	for (int i = 0; i < 8; ++i){
+		in >> c;
+		if (i % 3 == 0){
+			a = 0;
+			a = (int(c) - int('0')) * 10;
+		}
+		else if (i % 3 == 1){
+			a += (int(c) - int('0'));
+			if (i < 3)hora = a;
+			else if (i < 5)min = a;
+			else seg = a;
+		}
+	}
+	try {
+		hor = horas(seg, min, hora);
+	}
+	catch (invalid_argument const & e){
+		throw e;
+	}
+	return in;
+}
