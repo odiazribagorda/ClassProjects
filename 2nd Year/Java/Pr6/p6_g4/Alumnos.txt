@@ -1,0 +1,31 @@
+﻿Oscar Diaz Ribagorda, Mateo Garcia Perez.
+
+Correcciones practica 5:
+
+
+Corregido el vector de GameTable, ahora es un ArrayList.
+
+Mejorado la creciación de botones, se suprimió el else if gigante para signar los listeners.
+
+Separados los Board para was y ttt, ahora eredan los dos del GameBoardUI e implementan sus métodos de la manera necesaria.
+
+Creación de la interfaz PaintableTwoColors que se le pasa como atributo a ColorTableUI para que lo pinte, no tiene 
+que ser obligatoriamente para pintar las fichas de un tablero sino que puede pintar cualquier cosa con dos elementos que se 
+puedan cambiar de color.
+
+Implementada la funcion usage para mostrar los argumentos necesarios para la ejecución
+
+En el main no se guardan las vista 1 y vista2 de mabera que no hace falta el suppresWarning para unused
+
+Ya no da ningun error al jugar la maquina contra la maquina
+
+Al cambiar el modo de la comboBox se ejecuta la jugada instantaneamente.
+
+Dejamos igual:
+
+No logramos que el contains de validActions devuelva lo que debería, por lo que dejamos el bucle.
+
+Al usar el random color de base.Utils.colorGenerator aunque los colores de cada ejecución eran distintos entre si
+eran iguales en cada ejecucion así que elegimos generar aleatoriamente el RGB y sacar de ahí el color.
+
+
